@@ -8,3 +8,5 @@
 node_modules/
 logs/
 .venv/
+test/
+download_fs.py

@@ -13,5 +13,6 @@
         "ostream": "cpp",
         "sstream": "cpp",
         "iosfwd": "cpp"
-    }
+    },
+    "idf.portWin": "COM5"
 }

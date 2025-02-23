@@ -45,10 +45,10 @@ const string VERSION = "1.8.4";
 // When battery is full, VoltageOnADCPin = 12.6V / (5.1k + 15k) * 5.1k ~= 3.197V < 3.3V,
 // so this voltage divider setting is suitable for this need.
 
-// #define ENABLE_BATTERY_STATUS_INDICATOR
+#define ENABLE_BATTERY_STATUS_INDICATOR
 
 #ifdef ENABLE_BATTERY_STATUS_INDICATOR
-#define BATTERY_VOLTAGE_ADC_PIN 36
+#define BATTERY_VOLTAGE_ADC_PIN 19
 #define BATTERY_LEVEL_0 0 // 0-10%
 #define BATTERY_LEVEL_1 1 // 10-50%
 #define BATTERY_LEVEL_2 2 // 50-90%
@@ -57,9 +57,9 @@ const string VERSION = "1.8.4";
 #define BATTERY_TYPE_LI_ION 0
 #define BATTERY_TYPE_LI_FE_PO4 1
 
-#define BATTERY_TYPE BATTERY_TYPE_LI_ION // Choose from BATTERY_TYPE_LI_ION or BATTERY_TYPE_LI_FE_PO4
-#define BATTERY_CELLS 3
-#define VOLTAGE_DIVIDER_R1 (5.1 * 1000) // 5.1k ohm
+#define BATTERY_TYPE BATTERY_TYPE_LI_FE_PO4 // Choose from BATTERY_TYPE_LI_ION or BATTERY_TYPE_LI_FE_PO4
+#define BATTERY_CELLS 2
+#define VOLTAGE_DIVIDER_R1 (5.6 * 1000) // 5.1k ohm
 #define VOLTAGE_DIVIDER_R2 (15 * 1000)  // 15k ohm
 
 #if BATTERY_TYPE == BATTERY_TYPE_LI_ION
@@ -83,32 +83,32 @@ const string VERSION = "1.8.4";
 // #define OLED_DRIVER_SH1106
 
 // Button GPIOs
-#define BUTTON_PRESET1_GPIO 25
-#define BUTTON_DRIVE_GPIO 25
+#define BUTTON_PRESET1_GPIO 36
+#define BUTTON_DRIVE_GPIO 36
 
-#define BUTTON_PRESET2_GPIO 26
-#define BUTTON_MOD_GPIO 26
+#define BUTTON_PRESET2_GPIO 39
+#define BUTTON_MOD_GPIO 39
 
-#define BUTTON_PRESET3_GPIO 32
-#define BUTTON_DELAY_GPIO 32
+#define BUTTON_PRESET3_GPIO 34
+#define BUTTON_DELAY_GPIO 34
 
-#define BUTTON_PRESET4_GPIO 33
-#define BUTTON_REVERB_GPIO 33
+#define BUTTON_PRESET4_GPIO 35
+#define BUTTON_REVERB_GPIO 35
 
-#define BUTTON_BANK_DOWN_GPIO 19
-#define BUTTON_NOISEGATE_GPIO 19
+#define BUTTON_BANK_DOWN_GPIO 33
+#define BUTTON_NOISEGATE_GPIO 33
 
-#define BUTTON_BANK_UP_GPIO 18
-#define BUTTON_COMP_GPIO 18
+#define BUTTON_BANK_UP_GPIO 32
+#define BUTTON_COMP_GPIO 32
 
 // Button long press time
 #define LONG_BUTTON_PRESS_TIME 1000
 
 // LED GPIOs
-#define LED_DRIVE_GPIO 27
-#define LED_MOD_GPIO 13
+#define LED_DRIVE_GPIO 2
+#define LED_MOD_GPIO 4
 #define LED_DELAY_GPIO 16
-#define LED_REVERB_GPIO 14
+#define LED_REVERB_GPIO 17
 
 // If the optional DEDICATED_PRESET_LEDS is defined below it will
 // slightly alter the behaviour of Ignitron to make the FX and
@@ -120,13 +120,13 @@ const string VERSION = "1.8.4";
 // The dedicated Preset LED GPIO pins LED_PRESET<n>_GPIO is defined
 // separately below under the #ifdef DEDICATED_PRESET_LEDS clause.
 
-// #define DEDICATED_PRESET_LEDS
+#define DEDICATED_PRESET_LEDS
 
 #ifdef DEDICATED_PRESET_LEDS
-#define LED_PRESET1_GPIO 0
-#define LED_PRESET2_GPIO 4
-#define LED_PRESET3_GPIO 12
-#define LED_PRESET4_GPIO 15
+#define LED_PRESET1_GPIO 13
+#define LED_PRESET2_GPIO 12
+#define LED_PRESET3_GPIO 19
+#define LED_PRESET4_GPIO 27
 #else
 #define LED_PRESET1_GPIO LED_DRIVE_GPIO
 #define LED_PRESET2_GPIO LED_MOD_GPIO
@@ -143,11 +143,11 @@ const string VERSION = "1.8.4";
 #define OPTIONAL_GPIO_4 15
 #endif
 
-#define LED_BANK_DOWN_GPIO 23
-#define LED_NOISEGATE_GPIO 23
+#define LED_BANK_DOWN_GPIO 26
+#define LED_NOISEGATE_GPIO 18
 
-#define LED_BANK_UP_GPIO 17
-#define LED_COMP_GPIO 17
+#define LED_BANK_UP_GPIO 25
+#define LED_COMP_GPIO 5
 
 // LED/Button numbering
 #define DRIVE_NUM 1

@@ -58,7 +58,7 @@ const string VERSION = "1.8.4";
 #define BATTERY_TYPE_LI_FE_PO4 1
 
 #define BATTERY_TYPE BATTERY_TYPE_LI_FE_PO4 // Choose from BATTERY_TYPE_LI_ION or BATTERY_TYPE_LI_FE_PO4
-#define BATTERY_CELLS 2
+#define BATTERY_CELLS 1
 #define VOLTAGE_DIVIDER_R1 (5.6 * 1000) // 5.1k ohm
 #define VOLTAGE_DIVIDER_R2 (15 * 1000)  // 15k ohm
 
@@ -83,8 +83,8 @@ const string VERSION = "1.8.4";
 // #define OLED_DRIVER_SH1106
 
 // Button GPIOs
-#define BUTTON_PRESET1_GPIO 36
-#define BUTTON_DRIVE_GPIO 36
+#define BUTTON_PRESET1_GPIO 23
+#define BUTTON_DRIVE_GPIO 23
 
 #define BUTTON_PRESET2_GPIO 39
 #define BUTTON_MOD_GPIO 39
@@ -125,7 +125,7 @@ const string VERSION = "1.8.4";
 #ifdef DEDICATED_PRESET_LEDS
 #define LED_PRESET1_GPIO 13
 #define LED_PRESET2_GPIO 12
-#define LED_PRESET3_GPIO 19
+#define LED_PRESET3_GPIO 14
 #define LED_PRESET4_GPIO 27
 #else
 #define LED_PRESET1_GPIO LED_DRIVE_GPIO
@@ -143,10 +143,10 @@ const string VERSION = "1.8.4";
 #define OPTIONAL_GPIO_4 15
 #endif
 
-#define LED_BANK_DOWN_GPIO 26
+#define LED_BANK_DOWN_GPIO 25
 #define LED_NOISEGATE_GPIO 18
 
-#define LED_BANK_UP_GPIO 25
+#define LED_BANK_UP_GPIO 26
 #define LED_COMP_GPIO 5
 
 // LED/Button numbering

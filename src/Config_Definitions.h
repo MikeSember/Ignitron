@@ -95,20 +95,20 @@ const string VERSION = "1.8.4";
 #define BUTTON_PRESET4_GPIO 35
 #define BUTTON_REVERB_GPIO 35
 
-#define BUTTON_BANK_DOWN_GPIO 33
-#define BUTTON_NOISEGATE_GPIO 33
+#define BUTTON_BANK_DOWN_GPIO 32
+#define BUTTON_NOISEGATE_GPIO 32
 
-#define BUTTON_BANK_UP_GPIO 32
-#define BUTTON_COMP_GPIO 32
+#define BUTTON_BANK_UP_GPIO 33
+#define BUTTON_COMP_GPIO 33
 
 // Button long press time
 #define LONG_BUTTON_PRESS_TIME 1000
 
 // LED GPIOs
-#define LED_DRIVE_GPIO 2
-#define LED_MOD_GPIO 4
-#define LED_DELAY_GPIO 16
-#define LED_REVERB_GPIO 17
+#define LED_DRIVE_GPIO 13
+#define LED_MOD_GPIO 12
+#define LED_DELAY_GPIO 14
+#define LED_REVERB_GPIO 27
 
 // If the optional DEDICATED_PRESET_LEDS is defined below it will
 // slightly alter the behaviour of Ignitron to make the FX and
@@ -123,10 +123,10 @@ const string VERSION = "1.8.4";
 #define DEDICATED_PRESET_LEDS
 
 #ifdef DEDICATED_PRESET_LEDS
-#define LED_PRESET1_GPIO 13
-#define LED_PRESET2_GPIO 12
-#define LED_PRESET3_GPIO 14
-#define LED_PRESET4_GPIO 27
+#define LED_PRESET1_GPIO 2
+#define LED_PRESET2_GPIO 4
+#define LED_PRESET3_GPIO 16
+#define LED_PRESET4_GPIO 17
 #else
 #define LED_PRESET1_GPIO LED_DRIVE_GPIO
 #define LED_PRESET2_GPIO LED_MOD_GPIO

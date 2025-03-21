@@ -421,11 +421,11 @@ void SparkDisplayControl::showBatterySymbol() {
         break;
     }
 
-    if (BATTERY_TYPE == BATTERY_TYPE_AMP) {
-        if (statusObject.ampBatteryChargingStatus() == BATTERY_CHARGING_STATUS_POWERED) {
-            battery_icon = epd_bitmap_battery_plug;
-        }
-    }
+//    if (BATTERY_TYPE == BATTERY_TYPE_AMP) {
+//        if (statusObject.ampBatteryChargingStatus() == BATTERY_CHARGING_STATUS_POWERED) {
+//            battery_icon = epd_bitmap_battery_plug;
+//        }
+//    }
 
     display.drawBitmap(xPosSymbol, yPosSymbol, battery_icon, symbolWidth, symbolHeight, color);
 }

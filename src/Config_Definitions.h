@@ -111,25 +111,20 @@ enum BatteryChargingStatus {
 // Depending on the user preferences enabling blink can be a help
 // to see that we have left the normal Preset mode. However on stage
 // this can be irritating with a pedal flashing.
-const bool ENABLE_FX_BLINK = false;
+ENABLE_FX_BLINK = false;
 
 // Button GPIOs
 enum ButtonGpio {
     BUTTON_PRESET1_GPIO = 25,
     BUTTON_DRIVE_GPIO = 25,
-
     BUTTON_PRESET2_GPIO = 26,
     BUTTON_MOD_GPIO = 26,
-
     BUTTON_PRESET3_GPIO = 32,
     BUTTON_DELAY_GPIO = 32,
-
     BUTTON_PRESET4_GPIO = 33,
     BUTTON_REVERB_GPIO = 33,
-
     BUTTON_BANK_DOWN_GPIO = 19,
     BUTTON_NOISEGATE_GPIO = 19,
-
     BUTTON_BANK_UP_GPIO = 18,
     BUTTON_COMP_GPIO = 18
 };
@@ -160,12 +155,12 @@ enum LedGpio {
     LED_NOISEGATE_GPIO = 23,
     LED_COMP_GPIO = 17,
 
-    LED_PRESET1_GPIO = 0,
-    LED_PRESET2_GPIO = 4,
-    LED_PRESET3_GPIO = 12,
-    LED_PRESET4_GPIO = 15,
-    LED_BANK_DOWN_GPIO = 23,
-    LED_BANK_UP_GPIO = 17,
+    LED_PRESET1_GPIO = LED_DRIVE_GPIO,
+    LED_PRESET2_GPIO = LED_MOD_GPIO,
+    LED_PRESET3_GPIO = LED_DELAY_GPIO,
+    LED_PRESET4_GPIO = LED_REVERB_GPIO,
+    LED_BANK_DOWN_GPIO = LED_NOISEGATE_GPIO,
+    LED_BANK_UP_GPIO = LED_COMP_GPIO,
 
     LED_GPIO_INVALID = -1
 };
@@ -178,14 +173,12 @@ enum LedGpio {
     LED_REVERB_GPIO = 14,
     LED_NOISEGATE_GPIO = 23,
     LED_COMP_GPIO = 17,
-
-    LED_PRESET1_GPIO = LED_DRIVE_GPIO,
-    LED_PRESET2_GPIO = LED_MOD_GPIO,
-    LED_PRESET3_GPIO = LED_DELAY_GPIO,
-    LED_PRESET4_GPIO = LED_REVERB_GPIO,
-    LED_BANK_DOWN_GPIO = LED_NOISEGATE_GPIO,
-    LED_BANK_UP_GPIO = LED_COMP_GPIO,
-
+    LED_DRIVE_GPIO = 27,
+    LED_MOD_GPIO = 13,
+    LED_DELAY_GPIO = 16,
+    LED_REVERB_GPIO = 14,
+    LED_NOISEGATE_GPIO = 23,
+    LED_COMP_GPIO = 17,
     LED_GPIO_INVALID = -1
 };
 

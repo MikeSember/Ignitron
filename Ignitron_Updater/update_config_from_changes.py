@@ -5,7 +5,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 CONFIG_FILE = "src/Config_Definitions.h"
 
-preset_lines = [
+GPIO_pins = [
     "BUTTON_PRESET1_GPIO = 23,",
     "BUTTON_DRIVE_GPIO = 23,",
     "BUTTON_PRESET2_GPIO = 39,",
@@ -18,13 +18,6 @@ preset_lines = [
     "BUTTON_NOISEGATE_GPIO = 32,",
     "BUTTON_BANK_UP_GPIO = 33,",
     "BUTTON_COMP_GPIO = 33",
-]
-
-ledptionalgpio = [
-    "OPTIONAL_GPIO_1 = 0,",
-    "OPTIONAL_GPIO_2 = 4,",
-    "OPTIONAL_GPIO_3 = 12,",
-    "OPTIONAL_GPIO_4 = 15",
 ]
 
 ledgpio = [
@@ -62,9 +55,7 @@ class Change:
         return cls.preset_dict
 
 
-change = Change
-change_preset_lines = Change(presets=preset_lines)
-change_led_optional_gpio = Change(presets=ledptionalgpio)
+change_gpio_pins = Change(presets=GPIO_pins)
 change_led_gpio = Change(presets=ledgpio)
 
 
@@ -105,7 +96,7 @@ class ConfigUpdater:
             updated_line = line
             for pin_name, pin_value in self.pin_dict.items():
                 # Check if this line contains the pin definition
-                if "=" in line in line and pin_name in line.rstrip("="):
+                if "=" in line in line and pin_name in line.split("=")[0]:
                     # Extract the line's indentation and structure
                     indent = len(line) - len(line.lstrip())
                     # Check if line ends with comma or semicolon

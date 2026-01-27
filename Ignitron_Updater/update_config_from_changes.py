@@ -28,21 +28,19 @@ ledptionalgpio = [
 ]
 
 ledgpio = [
-    "LED_DRIVE_GPIO = 2"
-    "LED_MOD_GPIO = 4"
-    "LED_DELAY_GPIO = 16"
-    "LED_REVERB_GPIO = 17"
-    "LED_BANK_DOWN_GPIO = 25"
-    "LED_NOISEGATE_GPIO = 5"
-    "LED_BANK_UP_GPIO = 26"
-    "LED_COMP_GPIO = 18"
-    "LED_PRESET1_GPIO = LED_DRIVE_GPIO"
-    "LED_PRESET2_GPIO = LED_MOD_GPIO"
-    "LED_PRESET3_GPIO = LED_DELAY_GPIO"
-    "LED_PRESET4_GPIO = LED_REVERB_GPIO"
+    "LED_DRIVE_GPIO = 2,",
+    "LED_MOD_GPIO = 4,",
+    "LED_DELAY_GPIO = 16,",
+    "LED_REVERB_GPIO = 17,",
+    "LED_BANK_DOWN_GPIO = 25,",
+    "LED_NOISEGATE_GPIO = 5,",
+    "LED_BANK_UP_GPIO = 26,",
+    "LED_COMP_GPIO = 18,",
+    #    "LED_PRESET1_GPIO = LED_DRIVE_GPIO,",
+    #    "LED_PRESET2_GPIO = LED_MOD_GPIO,",
+    #    "LED_PRESET3_GPIO = LED_DELAY_GPIO,",
+    #    "LED_PRESET4_GPIO = LED_REVERB_GPIO,",
 ]
-
-options = ["ENABLE_FX_BLINK = true;"]
 
 
 class Change:
@@ -50,22 +48,24 @@ class Change:
 
     def __init__(self, presets):
         self.presets = presets
+        self.preset_dict = self._create_pin_change_dict()
 
-        Change.all_changes.append(self.presets)
+        Change.all_changes.extend(self.presets)
 
-    def create_pin_change_dict(self):
+    @classmethod
+    def _create_pin_change_dict(cls):
         all_changes = Change.all_changes
-        self.preset_dict = {}
+        cls.preset_dict = {}
         for setting in all_changes:
             preset_name, preset_value = setting.split("=")
-            self.preset_dict.update({preset_name.strip(): preset_value.strip()})
-        return self.preset_dict
+            cls.preset_dict.update({preset_name.strip(): preset_value.strip()})
+        return cls.preset_dict
 
 
+change = Change
 change_preset_lines = Change(presets=preset_lines)
 change_led_optional_gpio = Change(presets=ledptionalgpio)
 change_led_gpio = Change(presets=ledgpio)
-change_options = Change(presets=options)
 
 
 class ConfigUpdater:
@@ -78,7 +78,7 @@ class ConfigUpdater:
         """Collect all changes from Change.all_changes"""
         all_changes = []
         for change_list in Change.all_changes:
-            all_changes.extend(change_list)
+            all_changes.append(change_list)
         return all_changes
 
     def _create_pin_dict(self):
@@ -105,7 +105,7 @@ class ConfigUpdater:
             updated_line = line
             for pin_name, pin_value in self.pin_dict.items():
                 # Check if this line contains the pin definition
-                if pin_name in line and "=" in line:
+                if "=" in line in line and pin_name in line.rstrip("="):
                     # Extract the line's indentation and structure
                     indent = len(line) - len(line.lstrip())
                     # Check if line ends with comma or semicolon
@@ -115,7 +115,8 @@ class ConfigUpdater:
                     # Reconstruct the line with new value
                     prefix = " " * indent + pin_name + " = "
                     suffix = "," if has_comma else (";" if has_semicolon else "")
-                    updated_line = prefix + pin_value + suffix + "\n"
+
+                    updated_line = prefix + str(pin_value) + suffix + "\n"
                     break  # Only update matching pin once per line
             updated_lines.append(updated_line)
         return updated_lines

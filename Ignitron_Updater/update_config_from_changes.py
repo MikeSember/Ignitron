@@ -28,18 +28,18 @@ ledptionalgpio = [
 ]
 
 ledgpio = [
-    "LED_DRIVE_GPIO = 2,",
-    "LED_MOD_GPIO = 4,",
-    "LED_DELAY_GPIO = 16,",
-    "LED_REVERB_GPIO = 17,",
-    "LED_BANK_DOWN_GPIO = 25,",
+    "LED_DRIVE_GPIO = 13,",
+    "LED_MOD_GPIO = 12,",
+    "LED_DELAY_GPIO = 14,",
+    "LED_REVERB_GPIO = 27,",
     "LED_NOISEGATE_GPIO = 5,",
-    "LED_BANK_UP_GPIO = 26,",
     "LED_COMP_GPIO = 18,",
-    "LED_PRESET1_GPIO = LED_DRIVE_GPIO",
-    "LED_PRESET2_GPIO = LED_MOD_GPIO",
-    "LED_PRESET3_GPIO = LED_DELAY_GPIO",
-    "LED_PRESET4_GPIO = LED_REVERB_GPIO",
+    "LED_BANK_DOWN_GPIO = 26,",
+    "LED_BANK_UP_GPIO = 25,",
+    "LED_PRESET1_GPIO = 2",
+    "LED_PRESET2_GPIO = 4",
+    "LED_PRESET3_GPIO = 16",
+    "LED_PRESET4_GPIO = 17",
 ]
 
 options = ["const bool ENABLE_FX_BLINK = true;"]
@@ -65,7 +65,7 @@ class Change:
 change_preset_lines = Change(presets=preset_lines)
 change_led_optional_gpio = Change(presets=ledptionalgpio)
 change_led_gpio = Change(presets=ledgpio)
-change_options = Change(presets=options)
+# change_options = Change(presets=options)
 
 
 class ConfigUpdater:
